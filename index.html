@@ -6,6 +6,7 @@
   <title>Simulador de comisión por diferir a MSI</title>
   <link rel="icon" href="logo.png" type="image/png">
   <style>
+    /* Estilos base */
     body {
       background-color: #000000;
       color: #FFF0EB;
@@ -15,10 +16,10 @@
       margin: 0;
       display: flex;
       flex-direction: column;
-      justify-content: center;
+      justify-content: flex-start;
       align-items: center;
-      height: 100vh;
       box-sizing: border-box;
+      min-height: 100vh;
     }
     h1 {
       font-size: 36px;
@@ -86,13 +87,12 @@
       margin: 8px 0;
     }
     footer {
-      position: fixed;
-      bottom: 0;
       width: 100%;
       background-color: #000000;
       padding: 10px 0;
       text-align: center;
       font-size: 16px;
+      margin-top: 20px;
     }
     .heart {
       color: #F3520C;
@@ -105,6 +105,7 @@
     }
     .content {
       flex-grow: 1;
+      overflow: auto;
     }
 
     @keyframes fadeIn {
@@ -116,9 +117,77 @@
       }
     }
 
-    /* Cambiar el color de las letras de los meses */
     .highlight {
       color: #F3520C;
+    }
+
+    /* Media Queries - Responsividad */
+
+    /* Móviles */
+    @media (max-width: 767px) {
+      body {
+        padding: 10px;
+      }
+      h1 {
+        font-size: 28px;
+      }
+      p {
+        font-size: 16px;
+      }
+      input, select, button {
+        width: 100%;
+        max-width: 100%;
+        font-size: 16px;
+        padding: 12px;
+      }
+      .result-container {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+      .result {
+        max-width: 100%;
+        padding: 15px;
+        margin: 0 auto;
+      }
+    }
+
+    /* Tablets (entre 768px y 1024px) */
+    @media (min-width: 768px) and (max-width: 1024px) {
+      body {
+        padding: 20px;
+      }
+      h1 {
+        font-size: 32px;
+      }
+      p {
+        font-size: 18px;
+      }
+      .result-container {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 30px;
+      }
+      input, select, button {
+        font-size: 18px;
+        padding: 14px;
+      }
+      .result {
+        max-width: 350px;
+      }
+    }
+
+    /* Escritorio (más de 1024px) */
+    @media (min-width: 1025px) {
+      h1 {
+        font-size: 36px;
+      }
+      .result-container {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 40px;
+      }
+      input, select, button {
+        font-size: 18px;
+        padding: 15px 25px;
+      }
     }
   </style>
 </head>
@@ -181,7 +250,7 @@
         // Calcular el primer pago con la comisión incluida
         const primerPago = mensualidad + comision;
 
-        html += `
+        html += ` 
           <div class="result">
             <p><strong class="highlight">${meses} meses</strong></p> <!-- Cambio de color de las letras -->
             <p>Comisión por diferir: $${comision.toFixed(2)}</p>
