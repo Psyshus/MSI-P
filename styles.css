@@ -1,0 +1,150 @@
+/* Estilos base */
+body {
+  background-color: #000000;
+  color: #FFF0EB;
+  font-family: 'Arial', sans-serif;
+  text-align: center;
+  padding: 30px;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  box-sizing: border-box;
+  min-height: 100vh;
+  overflow-y: auto;  /* Permitir scroll si es necesario */
+}
+h1 {
+  font-size: 32px;
+  margin-bottom: 10px;
+  color: #FFF0EB;
+}
+p {
+  font-size: 16px;
+  margin: 10px 0;
+}
+input, select {
+    text-align: center;
+    background-color: #191A1C;
+    color: #FFFFFF;
+    border: 2px solid transparent;
+    border-radius: 8px;
+    padding: 12px;
+    margin: 10px 0;
+    font-size: 16px;
+    width: 90%;
+    max-width: 275px;
+}
+input:focus, select:focus {
+  border-color: #2864FA;
+  outline: none;
+}
+.hidden {
+  display: none;
+}
+
+/* Selector de tipo de cliente */
+#tipo-cliente {
+    text-align: center;
+    background-color: #191A1C;
+    color: white;
+    border: 2px solid #F3520C;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: bold;
+    width: 90%;
+    max-width: 230px;
+  padding: 8px 15px;  /* Ajuste de padding para reducir el tamaño */
+  margin: 15px 0;
+  cursor: pointer;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+/* Cambios en el hover y focus para el selector */
+#tipo-cliente:hover, #tipo-cliente:focus {
+  background-color: #191A1C;  /* Fondo gris al hacer hover o focus */
+  border-color: #2864FA; /* Mantener el borde azul */
+  color: #FFF0EB; /* Color blanco para el texto */
+  outline: none; /* Eliminar el borde azul por completo */
+}
+
+/* Contenedor de resultados */
+.result-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px; /* Espaciado uniforme entre cuadros */
+  margin-top: 30px;
+  width: 100%;
+  padding-bottom: 40px; /* Aumentar espacio hacia abajo para permitir scroll */
+}
+
+/* Contenedor individual de cada resultado */
+.result {
+  padding: 20px;
+  border: 2px solid #2864FA;
+  border-radius: 10px;
+  background-color: #191A1C;
+  width: 100%;
+  max-width: 380px;
+  text-align: center; /* Centrar contenido dentro */
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeIn 0.5s ease forwards; /* Animación de entrada */
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Leyenda para cliente administrativo */
+#leyenda {
+  font-size: 14px;
+  color: #F3520C;
+  margin-top: 10px;
+  font-style: italic;
+}
+
+/* Footer fijo */
+footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background-color: #000000;
+  text-align: center;
+  padding: 10px;
+  color: #FFF0EB;
+}
+
+footer p {
+  margin: 0;
+}
+
+/* Corazón en el footer */
+.heart {
+  color: #F3520C; /* Color naranja */
+  font-size: 20px;
+  transition: color 0.3s ease;
+}
+
+.heart:hover {
+  color: #FF6E14; /* Cambia a un tono más claro de naranja */
+}
+
+/* Adaptación responsive */
+@media (max-width: 768px) {
+  .result-container {
+    gap: 15px;
+  }
+  .result {
+    padding: 15px;
+    max-width: 100%;
+  }
+  input, select {
+    width: 100%;
+  }
+}
