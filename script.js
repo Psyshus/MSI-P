@@ -1,11 +1,14 @@
 function cambiarTipoCliente() {
   const tipoCliente = document.getElementById("tipo-cliente").value;
   const tasaAdminContainer = document.getElementById("tasa-administrativa-container");
+  const leyendaAdmin = document.getElementById("leyenda-admin");
 
   if (tipoCliente === "administrativo") {
     tasaAdminContainer.classList.remove("hidden");
+    leyendaAdmin.classList.remove("hidden");
   } else {
     tasaAdminContainer.classList.add("hidden");
+    leyendaAdmin.classList.add("hidden");
   }
 
   actualizarCalculo();

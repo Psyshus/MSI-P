@@ -11,22 +11,27 @@
     <h1>Simulador de Comisión por Diferir a MSI</h1>
     <p>Ingresa el monto a diferir y selecciona el tipo de cliente:</p>
 
-    <input type="number" id="monto" placeholder="Monto a diferir ($)" oninput="actualizarCalculo()" />
-
-    <div class="selector-container">
-      <label for="tipo-cliente">Tipo de cliente:</label>
-      <select id="tipo-cliente" onchange="cambiarTipoCliente()">
-        <option value="normal" selected>Cliente Normal</option>
-        <option value="administrativo">Cliente Administrativo</option>
-      </select>
+    <div class="input-container">
+      <input type="number" id="monto" placeholder="Monto a diferir ($)" oninput="actualizarCalculo()" />
+      <div class="selector-container">
+        <label for="tipo-cliente">Tipo de cliente:</label>
+        <select id="tipo-cliente" onchange="cambiarTipoCliente()">
+          <option value="normal" selected>Normal</option>
+          <option value="administrativo">Administrativo</option>
+        </select>
+      </div>
     </div>
 
-    <!-- Nota siempre visible -->
-    <p id="nota-aproximado">
+    <!-- Leyenda para el monto a diferir -->
+    <p id="leyenda">
       Nota: El monto mostrado es aproximado y puede variar. Siempre aclarar con el cliente que es un aproximado y el monto real le aparece en la aplicación una vez hecha la compra.
     </p>
 
-    <!-- Tasa administrativa solo para clientes administrativos -->
+    <!-- Leyenda para el cliente administrativo (oculta por defecto) -->
+    <p id="leyenda-admin" class="hidden">
+      Puedes editar la tasa de interés conforme te aparezca en el CRM. Esto solo es para clientes especiales con tasas menores a 79.90%.
+    </p>
+
     <div id="tasa-administrativa-container" class="hidden">
       <label for="tasa-admin">Selecciona la tasa de interés:</label>
       <select id="tasa-admin" onchange="actualizarCalculo()">
@@ -37,9 +42,6 @@
         <option value="29.90">29.90%</option>
         <option value="10.90">10.90%</option>
       </select>
-      <p id="leyenda">
-        Puedes editar la tasa de interés conforme te aparezca en el CRM. Esto solo es para clientes especiales con tasas menores a 79.90%.
-      </p>
     </div>
 
     <div id="resultados" class="result-container"></div>

@@ -12,7 +12,7 @@ body {
   align-items: center;
   box-sizing: border-box;
   min-height: 100vh;
-  overflow-y: auto;  /* Permitir scroll si es necesario */
+  overflow-y: auto;
 }
 h1 {
   font-size: 32px;
@@ -24,16 +24,15 @@ p {
   margin: 10px 0;
 }
 input, select {
-    text-align: center;
-    background-color: #191A1C;
-    color: #FFFFFF;
-    border: 2px solid transparent;
-    border-radius: 8px;
-    padding: 12px;
-    margin: 10px 0;
-    font-size: 16px;
-    width: 90%;
-    max-width: 275px;
+  background-color: #191A1C;
+  color: #FFFFFF;
+  border: 2px solid transparent;
+  border-radius: 8px;
+  padding: 12px;
+  font-size: 16px;
+  width: 100%;
+  max-width: 270px;
+  text-align: center;
 }
 input:focus, select:focus {
   border-color: #2864FA;
@@ -43,29 +42,42 @@ input:focus, select:focus {
   display: none;
 }
 
+/* Contenedor para el campo de monto y tipo de cliente */
+.input-container {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin: 20px 0;
+  flex-wrap: wrap;
+}
+
+.selector-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
 /* Selector de tipo de cliente */
 #tipo-cliente {
-    text-align: center;
-    background-color: #191A1C;
-    color: white;
-    border: 2px solid #F3520C;
-    border-radius: 8px;
-    font-size: 16px;
-    font-weight: bold;
-    width: 90%;
-    max-width: 230px;
-  padding: 8px 15px;  /* Ajuste de padding para reducir el tamaño */
-  margin: 15px 0;
+  background-color: #191A1C;
+  color: white;
+  border: 2px solid #F3520C;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: bold;
+  width: 100%;
+  max-width: 225px; /* Ajuste del ancho */
+  padding: 8px 15px;
   cursor: pointer;
   transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
 /* Cambios en el hover y focus para el selector */
 #tipo-cliente:hover, #tipo-cliente:focus {
-  background-color: #191A1C;  /* Fondo gris al hacer hover o focus */
-  border-color: #2864FA; /* Mantener el borde azul */
-  color: #FFF0EB; /* Color blanco para el texto */
-  outline: none; /* Eliminar el borde azul por completo */
+  background-color: #191A1C;
+  border-color: #2864FA;
+  color: #FFF0EB;
+  outline: none;
 }
 
 /* Contenedor de resultados */
@@ -73,10 +85,10 @@ input:focus, select:focus {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 20px; /* Espaciado uniforme entre cuadros */
+  gap: 20px;
   margin-top: 30px;
   width: 100%;
-  padding-bottom: 40px; /* Aumentar espacio hacia abajo para permitir scroll */
+  padding-bottom: 40px;
 }
 
 /* Contenedor individual de cada resultado */
@@ -87,11 +99,11 @@ input:focus, select:focus {
   background-color: #191A1C;
   width: 100%;
   max-width: 380px;
-  text-align: center; /* Centrar contenido dentro */
+  text-align: center;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5);
   opacity: 0;
   transform: translateY(20px);
-  animation: fadeIn 0.5s ease forwards; /* Animación de entrada */
+  animation: fadeIn 0.5s ease forwards;
 }
 
 @keyframes fadeIn {
@@ -101,12 +113,21 @@ input:focus, select:focus {
   }
 }
 
-/* Leyenda para cliente administrativo */
+/* Leyenda debajo de monto a diferir */
 #leyenda {
   font-size: 14px;
   color: #F3520C;
   margin-top: 10px;
   font-style: italic;
+}
+
+/* Leyenda para clientes administrativos */
+#leyenda-admin {
+  font-size: 14px;
+  color: #F3520C;
+  margin-top: 10px;
+  font-style: italic;
+  font-weight: bold;
 }
 
 /* Footer fijo */
@@ -126,13 +147,13 @@ footer p {
 
 /* Corazón en el footer */
 .heart {
-  color: #F3520C; /* Color naranja */
+  color: #F3520C;
   font-size: 20px;
   transition: color 0.3s ease;
 }
 
 .heart:hover {
-  color: #FF6E14; /* Cambia a un tono más claro de naranja */
+  color: #FF6E14;
 }
 
 /* Adaptación responsive */
