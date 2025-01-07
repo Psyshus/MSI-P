@@ -24,30 +24,42 @@ function actualizarCalculo() {
     return;
   }
 
-  let tasaSeleccionada = 99.90; // Por defecto para cliente normal
+  let tasaSeleccionada = 99.90; // Tasa por defecto para clientes normales
+  let factoresBase;
 
-  if (tipoCliente === "administrativo") {
+  if (tipoCliente === "normal") {
+    // Factores para clientes normales
+    factoresBase = {
+      3: 0.087,
+      6: 0.174,
+      9: 0.261,
+      12: 0.348,
+    };
+  } else if (tipoCliente === "administrativo") {
     const tasaAdmin = parseFloat(document.getElementById("tasa-admin").value);
     if (!isNaN(tasaAdmin)) {
       tasaSeleccionada = tasaAdmin;
     }
-  }
 
-  const factoresBase = {
-    3: 0.087,
-    6: 0.174,
-    9: 0.261,
-    12: 0.348,
-  };
+    // Factores base ajustados para la tasa administrativa estándar (39.90%)
+    factoresBase = {
+      3: 0.0522,
+      6: 0.1044,
+      9: 0.1566,
+      12: 0.2088,
+    };
 
-  const factoresAjustados = {};
-  for (let meses of [3, 6, 9, 12]) {
-    factoresAjustados[meses] = factoresBase[meses] * (tasaSeleccionada / 99.90);
+    // Ajustar factores proporcionalmente si la tasa administrativa no es 39.90%
+    if (tasaSeleccionada !== 39.90) {
+      for (let meses in factoresBase) {
+        factoresBase[meses] = factoresBase[meses] * (tasaSeleccionada / 39.90);
+      }
+    }
   }
 
   let html = '';
   for (let meses of [3, 6, 9, 12]) {
-    const comision = monto * factoresAjustados[meses];
+    const comision = monto * factoresBase[meses];
     const mensualidad = monto / meses;
     const primerPago = mensualidad + comision;
 
